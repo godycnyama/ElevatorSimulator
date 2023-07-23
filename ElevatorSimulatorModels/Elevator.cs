@@ -11,8 +11,8 @@ namespace ElevatorSimulatorModels
         private int _currentFloor;
         private int _destinationFloor;
         private List<int> _destinationFloors;
-        private List<ElevatorRequest> _totalCurrentRequests;
-        private List<ElevatorRequest> _thisElevatorRequests;
+        private List<ElevatorRequest> _totalCurrentRequests = new List<ElevatorRequest>();
+        private List<ElevatorRequest> _thisElevatorRequests = new List<ElevatorRequest>();
         private int _elevatorId;
         private int _elevatorStatus;
 
@@ -98,16 +98,16 @@ namespace ElevatorSimulatorModels
         private void PickUpPassengers()
         {
             List<ElevatorRequest> _potentialRequests = new List<ElevatorRequest>();
-            if (_elevatorDirection == 1) 
+            if (_elevatorDirection == 1) // if elevator is moving up
             { 
                _potentialRequests = _totalCurrentRequests.Where(x => x.OriginFloor == _currentFloor && x.DestinationFloor > _currentFloor).ToList();
             }
-            else if (_elevatorDirection == -1)
+            else if (_elevatorDirection == -1) // if elevator is moving down
             {
                 _potentialRequests = _totalCurrentRequests.Where(x => x.OriginFloor == _currentFloor && x.DestinationFloor < _currentFloor).ToList();
             }
 
-            foreach (ElevatorRequest request in _potentialRequests)
+            foreach (ElevatorRequest request in _potentialRequests) //add passengers to elevator if there is space
             {
                 if(_elevatorCurrentCapacity < _elevatorMaximumCapacity)
                 {

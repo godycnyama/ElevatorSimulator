@@ -26,12 +26,19 @@ class Program
             int originFloor = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the floor number you want to go to: ");
             int destinationFloor = Convert.ToInt32(Console.ReadLine());
+
+            if(originFloor == destinationFloor)
+            {
+                Console.WriteLine("You are already on floor {0}, please enter a different floor!", originFloor);
+                continue;
+            }
        
             ElevatorRequest elevatorRequest = new ElevatorRequest
             {
                 OriginFloor = originFloor,
                 DestinationFloor = destinationFloor
             };
+            Console.WriteLine("You are on floor {0} and want to go to floor {1}", elevatorRequest.OriginFloor, elevatorRequest.DestinationFloor);
             //add the request to the list
             requests.Add(elevatorRequest);
 
