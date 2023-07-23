@@ -1,4 +1,4 @@
-﻿namespace ElevatorSimulatorModels
+﻿namespace ElevatorSimulatorDomain
 {
     public class ElevatorRequest
     {

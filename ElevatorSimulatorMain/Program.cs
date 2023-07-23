@@ -1,4 +1,4 @@
-﻿using ElevatorSimulatorModels;
+﻿using ElevatorSimulatorDomain;
 
 namespace ElevatorSimulatorMain;
 class Program
@@ -38,18 +38,10 @@ class Program
                 OriginFloor = originFloor,
                 DestinationFloor = destinationFloor
             };
-            Console.WriteLine("You are on floor {0} and want to go to floor {1}", elevatorRequest.OriginFloor, elevatorRequest.DestinationFloor);
+           
             //add the request to the list
             requests.Add(elevatorRequest);
 
-            ////get the next request
-            //int request = requests[0];
-            ////get the next elevator
-            //Elevator elevator = elevators[0];
-            ////move the elevator to the request
-            //elevator.MoveToFloor(request);
-            ////remove the request from the list
-            //requests.Remove(request);
             foreach (Elevator elevator in elevators)
             {
                 elevator.SetCurrentRequests(requests);

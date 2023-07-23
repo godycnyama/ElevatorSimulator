@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElevatorSimulatorModels
+namespace ElevatorSimulatorDomain
 {
     public class Elevator
     {
@@ -38,12 +38,12 @@ namespace ElevatorSimulatorModels
 
         private void OpenDoor()
         {
-           _elevatorDoorOpen = true ;
+            _elevatorDoorOpen = true;
         }
 
         private void CloseDoor()
         {
-            _elevatorDoorOpen = false ;
+            _elevatorDoorOpen = false;
         }
 
         private void MoveUp()
@@ -99,8 +99,8 @@ namespace ElevatorSimulatorModels
         {
             List<ElevatorRequest> _potentialRequests = new List<ElevatorRequest>();
             if (_elevatorDirection == 1) // if elevator is moving up
-            { 
-               _potentialRequests = _totalCurrentRequests.Where(x => x.OriginFloor == _currentFloor && x.DestinationFloor > _currentFloor).ToList();
+            {
+                _potentialRequests = _totalCurrentRequests.Where(x => x.OriginFloor == _currentFloor && x.DestinationFloor > _currentFloor).ToList();
             }
             else if (_elevatorDirection == -1) // if elevator is moving down
             {
@@ -109,15 +109,16 @@ namespace ElevatorSimulatorModels
 
             foreach (ElevatorRequest request in _potentialRequests) //add passengers to elevator if there is space
             {
-                if(_elevatorCurrentCapacity < _elevatorMaximumCapacity)
+                if (_elevatorCurrentCapacity < _elevatorMaximumCapacity)
                 {
                     _thisElevatorRequests.Add(request);
                     _totalCurrentRequests.Remove(request);
                     _elevatorCurrentCapacity++;
-                } else
+                }
+                else
                 {
                     break;
-                }   
+                }
             }
         }
 
@@ -131,26 +132,27 @@ namespace ElevatorSimulatorModels
         public void ExecuteMove()
         {
             // if this elevator has passengers destined for the current floor, or there is space in the elevator
-            if (_thisElevatorRequests.Where(x => x.DestinationFloor == _currentFloor).ToList().Count > 0 || (_elevatorCurrentCapacity < _elevatorMaximumCapacity))
+            if (_thisElevatorRequests.Where(x => x.DestinationFloor == _currentFloor).ToList().Count > 0 || _elevatorCurrentCapacity < _elevatorMaximumCapacity)
             {
                 Stop();
                 OpenDoor();
                 DropOffPassengers();
                 PickUpPassengers();
                 CloseDoor();
-                if(_elevatorDirection == 1) //continue moving up
+                if (_elevatorDirection == 1) //continue moving up
                 {
                     MoveUp();
-                } else if (_elevatorDirection == -1) //continue moving down
+                }
+                else if (_elevatorDirection == -1) //continue moving down
                 {
                     MoveDown();
                 }
             }
-            else if(_elevatorDirection == 1 && (_elevatorCurrentCapacity == _elevatorMaximumCapacity)) //if elevator is full continue moving up
+            else if (_elevatorDirection == 1 && _elevatorCurrentCapacity == _elevatorMaximumCapacity) //if elevator is full continue moving up
             {
                 MoveUp();
             }
-            else if (_elevatorDirection == -1 && (_elevatorCurrentCapacity == _elevatorMaximumCapacity)) //if elevator is full continue moving down
+            else if (_elevatorDirection == -1 && _elevatorCurrentCapacity == _elevatorMaximumCapacity) //if elevator is full continue moving down
             {
                 MoveDown();
             }
