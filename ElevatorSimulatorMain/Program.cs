@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        //initialize an array of 10 floors
+        //assuming a maximum of 10 floors initialize an array of 10 floors
         int[] floors = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
         //initialize elevator requests pool. An elevator request is represented by a floor number
@@ -18,8 +18,6 @@ class Program
         {
             elevators[i] = new Elevator(i, 0, 10, 1);
         }
-
-        //requests.Count > 0;
 
         while (true)
         {
@@ -48,15 +46,7 @@ class Program
             foreach (Elevator elevator in elevators)
             {
                 elevator.SetCurrentRequests(requests);
-            //    if (elevator.CurrentFloor == request)
-            //    {
-            //        Console.WriteLine("Elevator is already on this floor.");
-            //        break;
-            //    }
-            //    else
-            //    {
-            //        elevator.MoveToFloor(request);
-            //    }
+                elevator.ExecuteMove();
             }
         }
     }
