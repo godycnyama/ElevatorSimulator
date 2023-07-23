@@ -8,7 +8,7 @@ class Program
         //assuming a maximum of 10 floors initialize an array of 10 floors
         int[] floors = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-        //initialize elevator requests pool. An elevator request is represented by a floor number
+        //initialize elevator requests pool. 
         List<ElevatorRequest> requests = new List<ElevatorRequest>();
 
         //assuming a maximum of 4 elevators, initialize 4 elevators

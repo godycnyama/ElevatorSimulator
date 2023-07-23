@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ElevatorSimulatorModels\ElevatorSimulatorDomain.csproj" />
+    <ProjectReference Include="..\ElevatorSimulatorDomain\ElevatorSimulatorDomain.csproj" />
   </ItemGroup>
 
 </Project>
