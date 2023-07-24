@@ -32,12 +32,9 @@ class Program
                 Console.WriteLine("You are already on floor {0}, please enter a different floor!", originFloor);
                 continue;
             }
-       
-            ElevatorRequest elevatorRequest = new ElevatorRequest
-            {
-                OriginFloor = originFloor,
-                DestinationFloor = destinationFloor
-            };
+
+            ElevatorRequest elevatorRequest = new ElevatorRequest(destinationFloor, originFloor);
+            
            
             //add the request to the list
             requests.Add(elevatorRequest);

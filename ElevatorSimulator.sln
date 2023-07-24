@@ -5,7 +5,9 @@ VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorSimulatorMain", "ElevatorSimulatorMain\ElevatorSimulatorMain.csproj", "{B42D4FBB-B12A-4D5B-B5BD-89600E23EF79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorSimulatorDomain", "ElevatorSimulatorDomain\ElevatorSimulatorDomain.csproj", "{A9C53B4A-94E6-4D55-B60B-41054A7A3EA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElevatorSimulatorDomain", "ElevatorSimulatorDomain\ElevatorSimulatorDomain.csproj", "{A9C53B4A-94E6-4D55-B60B-41054A7A3EA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorSimulatorUnitTests", "ElevatorSimulatorUnitTests\ElevatorSimulatorUnitTests.csproj", "{C9FD0037-1C3F-4CC3-93CB-6A6011FE3E28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A9C53B4A-94E6-4D55-B60B-41054A7A3EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9C53B4A-94E6-4D55-B60B-41054A7A3EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9C53B4A-94E6-4D55-B60B-41054A7A3EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9FD0037-1C3F-4CC3-93CB-6A6011FE3E28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9FD0037-1C3F-4CC3-93CB-6A6011FE3E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9FD0037-1C3F-4CC3-93CB-6A6011FE3E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9FD0037-1C3F-4CC3-93CB-6A6011FE3E28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

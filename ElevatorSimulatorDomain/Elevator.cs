@@ -30,24 +30,24 @@
             _elevatorCurrentCapacity = elevatorCurrentCapacity;
         }
 
-        private void OpenDoor()
+        public void OpenDoor()
         {
             _elevatorDoorOpen = true;
         }
 
-        private void CloseDoor()
+        public void CloseDoor()
         {
             _elevatorDoorOpen = false;
         }
 
-        private void MoveUp()
+        public void MoveUp()
         {
             _elevatorIsMoving = true;
             _elevatorDirection = 1;
             _currentFloor = _currentFloor + _elevatorDirection;
         }
 
-        private void MoveDown()
+        public void MoveDown()
         {
             _elevatorIsMoving = true;
             _elevatorDirection = -1;
@@ -59,22 +59,22 @@
             _destinationFloor = floor;
         }
 
-        private void Stop()
+        public void Stop()
         {
             _elevatorIsMoving = false;
         }
 
-        private void SetElevatorStatus(int status)
+        public void SetElevatorStatus(int status)
         {
             _elevatorStatus = status;
         }
 
-        private int GetCurrentFloor()
+        public int GetCurrentFloor()
         {
             return _currentFloor;
         }
 
-        private List<int> GetDestinationFloors()
+        public List<int> GetDestinationFloors()
         {
             return _destinationFloors;
         }
@@ -89,7 +89,7 @@
             _totalCurrentRequests = currentRequests;
         }
 
-        private void PickUpPassengers()
+        public void PickUpPassengers()
         {
             List<ElevatorRequest> _potentialRequests = new List<ElevatorRequest>();
             if (_elevatorDirection == 1) // if elevator is moving up
@@ -116,7 +116,7 @@
             }
         }
 
-        private void DropOffPassengers()
+        public void DropOffPassengers()
         {
             List<ElevatorRequest> _completedRequests = _thisElevatorRequests.Where(x => x.DestinationFloor == _currentFloor).ToList();
             _elevatorCurrentCapacity -= _completedRequests.Count;
