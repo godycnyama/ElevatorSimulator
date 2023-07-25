@@ -1,6 +1,6 @@
 # ElevatorSimulator
 
-This is a console program that simulates elevators in a multi-story building.
+This is a console program that simulates an elevators control system in a multi-story building.
 This is a .Net 7 project and in order to run it, one needs to install the .net 7 SDK or the .net 7 runtime.
 To run it locally, clone the repo and run the donet restore and dotnet run commands on project ElevatorSimulatorMain.
 
