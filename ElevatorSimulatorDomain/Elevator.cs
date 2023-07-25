@@ -16,7 +16,7 @@
         bool _elevatorIsMoving = false;
         public Elevator(int elevatorId, int elevatorCurrentCapacity, int elevatorMaximumCapacity, int currentFloor)
         {
-            _currentFloor = 0;
+            _currentFloor = currentFloor;
             _elevatorId = elevatorId;
             _elevatorDirection = 0;
             _elevatorMaximumCapacity = elevatorMaximumCapacity;
