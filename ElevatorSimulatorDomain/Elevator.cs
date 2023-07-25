@@ -3,28 +3,21 @@
     public class Elevator
     {
         private int _currentFloor;
-        private int _destinationFloor;
-        private List<int> _destinationFloors;
         private List<ElevatorRequest> _totalCurrentRequests = new List<ElevatorRequest>();
         private List<ElevatorRequest> _thisElevatorRequests = new List<ElevatorRequest>();
-        private int _elevatorId;
-        private int _elevatorStatus;
+        private readonly int _elevatorId;
 
-        //elevator direction: 1 = up, -1 = down, 0 = idle
+        //elevator direction: 1 = up, -1 = down
         private int _elevatorDirection;
         private int _elevatorMaximumCapacity;
         private int _elevatorCurrentCapacity;
 
         bool _elevatorDoorOpen = false;
-        bool _elevatorDoorClosed;
         bool _elevatorIsMoving = false;
         public Elevator(int elevatorId, int elevatorCurrentCapacity, int elevatorMaximumCapacity, int currentFloor)
         {
-            _currentFloor = 1;
-            _destinationFloor = 1;
-            _destinationFloors = new List<int>();
+            _currentFloor = 0;
             _elevatorId = elevatorId;
-            _elevatorStatus = 0;
             _elevatorDirection = 0;
             _elevatorMaximumCapacity = elevatorMaximumCapacity;
             _elevatorCurrentCapacity = elevatorCurrentCapacity;
@@ -54,19 +47,9 @@
             _currentFloor = _currentFloor + _elevatorDirection;
         }
 
-        public void MoveToFloor(int floor)
-        {
-            _destinationFloor = floor;
-        }
-
         public void Stop()
         {
             _elevatorIsMoving = false;
-        }
-
-        public void SetElevatorStatus(int status)
-        {
-            _elevatorStatus = status;
         }
 
         public int GetCurrentFloor()
@@ -74,14 +57,19 @@
             return _currentFloor;
         }
 
-        public List<int> GetDestinationFloors()
+        public int GetCurrentCapacity()
         {
-            return _destinationFloors;
+            return _elevatorCurrentCapacity;
         }
 
-        public void SetDestinationFloors(List<int> destinationFloors)
+        public int GetElevatorId()
         {
-            _destinationFloors = destinationFloors;
+            return _elevatorId;
+        }
+
+        public List<ElevatorRequest> GetThisElevatorRequests()
+        {
+            return _thisElevatorRequests;
         }
 
         public void SetCurrentRequests(List<ElevatorRequest> currentRequests)
@@ -91,6 +79,10 @@
 
         public void PickUpPassengers()
         {
+            int _numberOfPassengersToPickUp = _elevatorMaximumCapacity - _elevatorCurrentCapacity;
+            int _numberOfPassengersWaiting = _totalCurrentRequests.Count(x => x.OriginFloor == _currentFloor);
+            int _numberOfPassengersPickedUp = 0;
+
             List<ElevatorRequest> _potentialRequests = new List<ElevatorRequest>();
             if (_elevatorDirection == 1) // if elevator is moving up
             {
@@ -105,15 +97,18 @@
             {
                 if (_elevatorCurrentCapacity < _elevatorMaximumCapacity)
                 {
-                    _thisElevatorRequests.Add(request);
-                    _totalCurrentRequests.Remove(request);
-                    _elevatorCurrentCapacity++;
+                    _thisElevatorRequests.Add(request); //add request to this elevator
+                    _totalCurrentRequests.Remove(request);//remove request from total requests
+                    _elevatorCurrentCapacity++; //increase elevator current capacity
+                    _numberOfPassengersPickedUp++;
                 }
                 else
                 {
                     break;
                 }
             }
+
+            Console.WriteLine("Elevator " + _elevatorId + " picked up " + _numberOfPassengersPickedUp + " passengers from floor " + _currentFloor);
         }
 
         public void DropOffPassengers()
@@ -121,6 +116,7 @@
             List<ElevatorRequest> _completedRequests = _thisElevatorRequests.Where(x => x.DestinationFloor == _currentFloor).ToList();
             _elevatorCurrentCapacity -= _completedRequests.Count;
             _thisElevatorRequests.RemoveAll(x => x.DestinationFloor == _currentFloor);
+            Console.WriteLine("Elevator " + _elevatorId + " dropped off " + _completedRequests.Count + " passengers at floor " + _currentFloor);
         }
 
         public void ExecuteMove()

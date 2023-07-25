@@ -1,6 +1,3 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System;
 using ElevatorSimulatorDomain;
 
 namespace ElevatorSimulatorUnitTests
@@ -8,10 +5,6 @@ namespace ElevatorSimulatorUnitTests
     [TestClass]
     public class ElevatorTests
     {
-        public ElevatorTests()
-        {
-
-        }
         [TestMethod]
         public void TestMoveUp()
         {
@@ -39,19 +32,6 @@ namespace ElevatorSimulatorUnitTests
         }
 
         [TestMethod]
-        public void TestMoveToFloor()
-        {
-            // Arrange
-            Elevator elevator = new Elevator(1, 0, 10, 1);
-
-            // Act
-            elevator.MoveToFloor(5);
-
-            // Assert
-            Assert.AreEqual(5, elevator.GetCurrentFloor());
-        }
-
-        [TestMethod]
         public void TestPickUpPassengers()
         {
             // Arrange
@@ -69,7 +49,7 @@ namespace ElevatorSimulatorUnitTests
 
             // Assert
             Assert.AreEqual(3, elevator.GetCurrentCapacity());
-            Assert.AreEqual(2, elevator.GetDestinationFloors().Count);
+            Assert.AreEqual(2, elevator.GetThisElevatorRequests().Count);
         }
 
         [TestMethod]
@@ -91,7 +71,7 @@ namespace ElevatorSimulatorUnitTests
 
             // Assert
             Assert.AreEqual(0, elevator.GetCurrentCapacity());
-            Assert.AreEqual(0, elevator.GetDestinationFloors().Count);
+            Assert.AreEqual(0, elevator.GetThisElevatorRequests().Count);
         }
     }
 }
