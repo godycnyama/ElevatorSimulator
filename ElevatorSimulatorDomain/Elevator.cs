@@ -67,6 +67,12 @@
             return _elevatorId;
         }
 
+        public void SetThisElevatorRequests(List<ElevatorRequest> thisElevatorRequests)
+        {
+            _thisElevatorRequests = thisElevatorRequests;
+            _elevatorCurrentCapacity = _thisElevatorRequests.Count;
+        }
+
         public List<ElevatorRequest> GetThisElevatorRequests()
         {
             return _thisElevatorRequests;
@@ -84,6 +90,11 @@
             int _numberOfPassengersPickedUp = 0;
 
             List<ElevatorRequest> _potentialRequests = new List<ElevatorRequest>();
+            List<ElevatorRequest> _requestsUp = new List<ElevatorRequest>();
+            _requestsUp = _totalCurrentRequests.Where(x => x.OriginFloor == _currentFloor && x.DestinationFloor > _currentFloor).ToList();
+            List<ElevatorRequest> _requestsDown = new List<ElevatorRequest>();
+            _requestsDown = _totalCurrentRequests.Where(x => x.OriginFloor == _currentFloor && x.DestinationFloor < _currentFloor).ToList();
+
             if (_elevatorDirection == 1) // if elevator is moving up
             {
                 _potentialRequests = _totalCurrentRequests.Where(x => x.OriginFloor == _currentFloor && x.DestinationFloor > _currentFloor).ToList();
@@ -91,6 +102,24 @@
             else if (_elevatorDirection == -1) // if elevator is moving down
             {
                 _potentialRequests = _totalCurrentRequests.Where(x => x.OriginFloor == _currentFloor && x.DestinationFloor < _currentFloor).ToList();
+            } 
+            else if (_elevatorDirection == 0) // if elevator is not moving
+            {
+               if(_requestsUp.Count > _requestsDown.Count)
+                {
+                    _potentialRequests = _requestsUp;
+                    _elevatorDirection = 1;
+                }
+                else if (_requestsUp.Count < _requestsDown.Count)
+                {
+                    _potentialRequests = _requestsDown;
+                    _elevatorDirection = -1;
+                }
+                else if (_requestsUp.Count == _requestsDown.Count)
+                {
+                    _potentialRequests = _requestsUp;
+                    _elevatorDirection = 1;
+                }
             }
 
             foreach (ElevatorRequest request in _potentialRequests) //add passengers to elevator if there is space

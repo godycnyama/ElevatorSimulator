@@ -48,30 +48,29 @@ namespace ElevatorSimulatorUnitTests
             elevator.PickUpPassengers();
 
             // Assert
-            Assert.AreEqual(3, elevator.GetCurrentCapacity());
-            Assert.AreEqual(2, elevator.GetThisElevatorRequests().Count);
+            Assert.AreEqual(1, elevator.GetCurrentCapacity());
+            Assert.AreEqual(1, elevator.GetThisElevatorRequests().Count);
         }
 
         [TestMethod]
         public void TestDropOffPassengers()
         {
             // Arrange
-            Elevator elevator = new Elevator(1, 5, 5, 1);
+            Elevator elevator = new Elevator(1, 0, 5, 4);
             List<ElevatorRequest> requests = new List<ElevatorRequest>
         {
             new ElevatorRequest(1, 4),
-            new ElevatorRequest(2, 5),
-            new ElevatorRequest(3, 3)
+            new ElevatorRequest(1, 4),
+            new ElevatorRequest(1, 5)
         };
-            elevator.SetCurrentRequests(requests);
+            elevator.SetThisElevatorRequests(requests);
 
             // Act
-            elevator.PickUpPassengers();
-            elevator.ExecuteMove();
+            elevator.DropOffPassengers();
 
             // Assert
-            Assert.AreEqual(0, elevator.GetCurrentCapacity());
-            Assert.AreEqual(0, elevator.GetThisElevatorRequests().Count);
+            Assert.AreEqual(1, elevator.GetCurrentCapacity());
+            Assert.AreEqual(1, elevator.GetThisElevatorRequests().Count);
         }
     }
 }
