@@ -30,7 +30,7 @@ To run the tests, enter dotnet test command.
 
  
 
-## How it works.
+## How it works
 
  
 
