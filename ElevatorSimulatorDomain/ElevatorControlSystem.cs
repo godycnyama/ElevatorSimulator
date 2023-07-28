@@ -16,7 +16,7 @@
             //initialize 4 elevators
             for (int i = 0; i < 4; i++)
             {
-                _elevators[i] = new Elevator(i, 0, 10, 1);
+                _elevators[i] = new Elevator(i, 0, 8, 0);
             }
         }
 
