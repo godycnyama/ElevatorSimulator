@@ -34,7 +34,7 @@ To run the tests, enter dotnet test command.
 
 On any given floor, to call an elevator, waiting passengers, enter the floor they are currently (origin floor) on and the destination floor. If the current and destination floors are the same, they will be prompted to input a destination floor that is different from the origin floor.
 
-When an elevator stops on a floor, it first drops off passengers who have destination floor the same as the current floor, then picks up passenger depending on space available. If there are no drop offs or pickups on a floor and the elevator is full, the elevator continues going whatever direction its going.
+When an elevator stops on a floor, it first drops off passengers who have destination floor the same as the current floor, then picks up passengers depending on space available. If there are no drop offs or pickups on a floor and the elevator is full, the elevator continues going whatever direction its going.
 
  
 
