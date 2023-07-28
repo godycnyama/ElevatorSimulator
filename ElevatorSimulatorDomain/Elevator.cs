@@ -67,6 +67,16 @@
             return _elevatorId;
         }
 
+        public bool GetElevatorDoorOpen()
+        {
+            return _elevatorDoorOpen;
+        }
+
+        public bool GetElevatorIsMoving()
+        {
+            return _elevatorIsMoving;
+        }
+
         public void SetThisElevatorRequests(List<ElevatorRequest> thisElevatorRequests)
         {
             _thisElevatorRequests = thisElevatorRequests;
