@@ -26,6 +26,8 @@ To run the tests, enter dotnet test command.
 
 #### -None movement is represented by 0
 
+#### -When the system starts, all elevators are on floor 0, which is the ground floor.
+
  
 
 ## How it works.
