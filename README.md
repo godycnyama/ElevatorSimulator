@@ -24,7 +24,7 @@ To run the tests, enter dotnet test command.
 
 #### -The movement downwards is represented by -1
 
-#### -Non movement is represented by 0
+#### -None movement is represented by 0
 
  
 
@@ -38,6 +38,6 @@ When an elevator stops on a floor, it first drops off passengers who have destin
 
  
 
-All elevator requests are put in a list. Each elevator picks up requests from this list. An elevator request consists of origin floor and destination floor. An request that has been picked up by an elevator,  is removed from the list.
+All elevator requests are put in a list. Each elevator picks up requests from this list. An elevator request consists of origin floor and destination floor. Any request that has been picked up by an elevator is removed from the list.
 
 
